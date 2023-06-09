@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class StudentController {
 
     @Autowired
     private StudentService studentServer;
+
+    private Student addNewStudent = new Student();
 
     @RequestMapping("/")
     public String home(Model model) {
@@ -70,9 +73,16 @@ public class StudentController {
 
     @RequestMapping("/form/addNewStudent")
     public String confirmAddStudent(Model model, @ModelAttribute("formNewStudent") Student student) {
-        System.out.println("Log: "+student);
         model.addAttribute("confirmNewStudent", student);
+        addNewStudent = student;
         return "confirmAddStudent";
+    }
+
+    @RequestMapping("/form/addNewStudent/confirmAddStudent")
+    public String save(@ModelAttribute("confirmNewStudent") Student student) {
+        System.out.println("Tag=save Log: " + student);
+        studentServer.saveStudent(addNewStudent);
+        return "redirect:/form";
     }
 
 }

@@ -5,14 +5,41 @@
     <title>Title</title>
 </head>
 <body>
-<div th:object="${confirmNewStudent}">
+<form method="post" th:object="${confirmNewStudent}">
+    <div>
+        <label>ID</label>
+        <input type="text" disabled th:field="*{id}"/>
+    </div>
+    <div>
+        <label>NAME</label>
+        <input type="text" disabled th:field="*{name}"/>
+    </div>
+    <div>
+        <label>DOB</label>
+        <input type="date" disabled th:field="*{dob}"/>
+    </div>
+    <div>
+        <label>DEPARTMENT</label>
+        <!--        <input type="text" th:field="*{department}"/>-->
+        <select disabled th:field="*{department}" >
+            <option value="value1">Option 1</option>
+            <option value="value2">Option 2</option>
+            <option value="value3">Option 3</option>
+        </select>
+    </div>
+    <div>
+        <label>APPROVED</label>
+        <input type="number" disabled th:field="*{approved}"/>
+    </div>
+</form>
+<div >
     <button onclick="goBack()" th:href="@{/back} ">Back</button>
     <script>
         function goBack() {
           history.back();
         }
     </script>
-    <button th:href="@{/confirmAddStudent}">Confirm</button>
+    <button onclick="window.location.href='/form/addNewStudent/confirmAddStudent'">Confirm</button>
 </div>
 </body>
 </html>

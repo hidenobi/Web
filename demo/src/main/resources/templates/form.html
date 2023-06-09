@@ -20,7 +20,12 @@
     </div>
     <div>
         <label>DEPARTMENT</label>
-        <input type="text" th:field="*{department}"/>
+<!--        <input type="text" th:field="*{department}"/>-->
+        <select th:field="*{department}" >
+            <option value="value1">Option 1</option>
+            <option value="value2">Option 2</option>
+            <option value="value3">Option 3</option>
+        </select>
     </div>
     <div>
         <label>APPROVED</label>
