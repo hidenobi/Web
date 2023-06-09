@@ -9,6 +9,8 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Student;
 import com.example.demo.service.StudentService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,13 +68,18 @@ public class StudentController {
     }
 
     @RequestMapping("/form")
-    public String form(Model model) {
-        model.addAttribute("formNewStudent", new Student());
+    public String form(Model model,HttpSession session) {
+        String department = (String)session.getAttribute("department");
+        Student student = new Student();
+        student.setDepartment(department);
+        model.addAttribute("formNewStudent", student);
         return "form";
     }
 
     @RequestMapping("/form/addNewStudent")
-    public String confirmAddStudent(Model model, @ModelAttribute("formNewStudent") Student student) {
+    public String confirmAddStudent(Model model, @ModelAttribute("formNewStudent") Student student, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.setAttribute("department",student.getDepartment());
         model.addAttribute("confirmNewStudent", student);
         addNewStudent = student;
         return "confirmAddStudent";

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Home</title>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<td>ID</td>
+					<td>Name</td>
+					<td>Dob</td>
+					<td>Department</td>
+					<td>Approved</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="l:${list}">
+					<td th:text="${l.id}"></td>
+					<td th:text="${l.name}"></td>
+					<td th:text="${l.dob}"></td>
+					<td th:text="${l.department}"></td>
+					<td th:text="${l.approved}"></td>
+					<td>
+						<a th:href="@{/approved/{id}(id=${l.id})}">Approved</a>
+						<a th:href="@{/detele/{id}(id=${l.id})}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
