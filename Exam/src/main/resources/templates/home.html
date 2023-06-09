@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Home</title>
+</head>
+
+<body>
+	<table>
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Name</td>
+				<td>DoB</td>
+				<td>Department</td>
+				<td>Approved</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="l:${list}">
+				<td th:text="${l.id}"></td>
+				<td th:text="${l.name}"></td>
+				<td th:text="${l.dob}"></td>
+				<td th:text="${l.department}"></td>
+				<td th:text="${l.approved}"></td>
+				<td>
+					<a th:href="@{/edit/{id}(id=${l.id})}">Edit</a>
+					<a th:href="@{/delete/{id}(id=${l.id})}">Delete</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a th:href="@{/add}">Add new student</a>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

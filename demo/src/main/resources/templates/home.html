@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Department</th>
+        <th>Approved</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="l:${list}">
+        <td th:text="${l.id}"></td>
+        <td th:text="${l.name}"></td>
+        <td th:text="${l.dob}"></td>
+        <td th:text="${l.department}"></td>
+        <td th:text="${l.approved}"></td>
+        <td>
+            <a th:href="@{/deleteStudent/{id}(id=${l.id})}">Delete</a>
+            <a th:href="@{/editStudent/{id}(id=${l.id})}">Edit</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a th:href="@{/addNewStudent}">Add new student</a>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

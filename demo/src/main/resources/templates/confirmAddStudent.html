@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:object="${confirmNewStudent}">
+    <button onclick="goBack()" th:href="@{/back} ">Back</button>
+    <script>
+        function goBack() {
+          history.back();
+        }
+    </script>
+    <button th:href="@{/confirmAddStudent}">Confirm</button>
+</div>
+</body>
+</html>

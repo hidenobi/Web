@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new student</title>
+</head>
+<body>
+<form method="post" th:action="@{/form/addNewStudent}" th:object="${formNewStudent}">
+    <div>
+        <label>ID</label>
+        <input type="text" th:field="*{id}"/>
+    </div>
+    <div>
+        <label>NAME</label>
+        <input type="text" th:field="*{name}"/>
+    </div>
+    <div>
+        <label>DOB</label>
+        <input type="date" th:field="*{dob}"/>
+    </div>
+    <div>
+        <label>DEPARTMENT</label>
+        <input type="text" th:field="*{department}"/>
+    </div>
+    <div>
+        <label>APPROVED</label>
+        <input type="number" disabled th:field="*{approved}"/>
+    </div>
+    <input type="submit" value="Save"/>
+    <input type="reset" value="Reset"/>
+</form>
+</body>
+</html>
